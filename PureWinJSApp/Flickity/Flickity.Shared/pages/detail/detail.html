@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>detail</title>
+
+    <link href="detail.css" rel="stylesheet" />
+    <script src="detail.js"></script>
+	<script src="controls/comments.js"></script>
+</head>
+<body>
+    <div class="detail-page fragment">
+        <header class="page-header" aria-label="Header content" role="banner">
+            <button class="back-button" data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle" data-win-bind="innerText: title._content"></span>
+            </h1>
+        </header>
+        <section class="page-section" aria-label="Main content" role="main">
+            <div class="picture-bloc">
+				<div class="picture-img">
+					<img class="picture" />
+				</div>
+				<div class="picture-detail">
+					<h3 data-win-bind="innerText: owner.realname"></h3>
+					<h6 class="posted">posted : <span data-win-bind="innerText: dates.posted"></span></h6>
+					<div class="tags-list"></div>
+					<p data-win-bind="innerHTML: description._content"></p>
+
+				</div>
+			</div>
+			<div class="comments-bloc" data-win-control="Flickity.UI.Detail.PictureComments"></div>
+			<div class="loader"></div>
+        </section>
+    </div>
+</body>
+</html>

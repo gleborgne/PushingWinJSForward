@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>searchbar</title>
+
+    <link href="searchbar.css" rel="stylesheet" />
+    <script src="searchbar.js"></script>
+</head>
+<body>
+    <div class="searchbar">
+		<h1>Flickity</h1>
+		<div class="btn-hide">&#xE0E1;</div>
+		<div class="searchpanel">
+			<input type="search" id="txtSearch" placeholder="enter your search terms here" /><button id="btnSearch">&#xE1A3;</button>
+		</div>
+		<div class="lastsearch">
+			<h2>last searches</h2>
+			<div class="lastsearch-items">
+
+			</div>
+		</div>
+		<div class="recent">
+			<h2>recent</h2>
+			<div id="pictureItem" data-win-control="WinJS.Binding.Template">
+				<div class="flickr-picture-item">
+					<div class="pic" data-win-bind="q : q Flickity.Bindings.picture"></div>
+				</div>
+			</div>
+			<div id="recentItemsList" data-win-control="WinJS.UI.ListView" data-win-options="{ itemTemplate : select('#pictureItem') }"></div>
+		</div>
+    </div>
+</body>
+</html>
