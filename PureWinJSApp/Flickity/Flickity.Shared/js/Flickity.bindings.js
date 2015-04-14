@@ -11,8 +11,7 @@ Flickity.Bindings = Flickity.Bindings || {};
 	});
 
 	Bindings.date = WinJS.Binding.initializer(function (source, sourceProps, dest, destProps) {
-		var pic = Flickity.Api.pictureUrl(source, sourceProps[0]);
-		dest.style.backgroundImage = 'url("' + pic + '")';
+		
 	});
 
 })(Flickity.Bindings);

@@ -6,6 +6,9 @@
     <SharedGUID>f7664933-13a7-41e9-b1ea-9d68b0da7bf4</SharedGUID>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)controls\comments\comments.css" />
+    <Content Include="$(MSBuildThisFileDirectory)controls\comments\comments.html" />
+    <Content Include="$(MSBuildThisFileDirectory)controls\comments\comments.js" />
     <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.css" />
     <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.less" />
     <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.html" />
@@ -21,9 +24,6 @@
     <Content Include="$(MSBuildThisFileDirectory)js\navigator.js" />
     <Content Include="$(MSBuildThisFileDirectory)js\default.js" />
     <Content Include="$(MSBuildThisFileDirectory)js\_reference.js" />
-    <Content Include="$(MSBuildThisFileDirectory)pages\detail\controls\comments.js" />
-    <Content Include="$(MSBuildThisFileDirectory)pages\detail\controls\picture.js" />
-    <Content Include="$(MSBuildThisFileDirectory)pages\detail\controls\picturedetail.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.css" />
     <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.less" />
     <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.html" />

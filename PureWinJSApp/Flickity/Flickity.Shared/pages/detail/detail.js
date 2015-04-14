@@ -12,13 +12,7 @@
 				ctrl.pictureDetail = detail;
 
 				return detail;
-			}, ctrl.detailLoadError.bind(ctrl));
-
-			ctrl.commentsDataPromise = Flickity.Api.comments(options.picture.id).then(function (comments) {
-				ctrl.pictureComments = comments;
-
-				return comments;
-			}, ctrl.detailLoadError.bind(ctrl));
+			}, ctrl.detailLoadError.bind(ctrl));			
 		},
 
 		processed: function (element, options) {
@@ -33,6 +27,8 @@
 				ctrl.processDetail();
 				if (detail.photo.comments._content === "0") {
 					ctrl.comments.style.display = 'none';
+				} else {
+					ctrl.comments.picture = ctrl.picture;
 				}
 				return WinJS.UI.Animation.fadeOut(ctrl.loader);
 			}).then(function () {
