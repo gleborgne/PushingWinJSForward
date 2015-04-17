@@ -37,8 +37,7 @@
 
 		processDetail: function () {
 			var ctrl = this;
-			if (ctrl.pictureDetail.photo) {
-				ctrl.pictureDetail.photo.description._content = toStaticHTML(ctrl.pictureDetail.photo.description._content);
+			if (ctrl.pictureDetail.photo) {				
 				WinJS.Binding.processAll(ctrl.element, ctrl.pictureDetail.photo);
 				ctrl.pictureDetail.photo.tags.tag.forEach(function (tag) {
 					new WinJSContrib.UI.FluentDOM('SPAN', 'tag', ctrl.tagsList).text(tag._content).tap(function () {

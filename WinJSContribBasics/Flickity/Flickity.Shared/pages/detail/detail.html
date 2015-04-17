@@ -20,13 +20,13 @@
         <section class="page-section" aria-label="Main content" role="main">
             <div class="picture-bloc">
 				<div class="picture-img">
-					<img class="picture" member="pictureImg" />
+					<img class="picture" draggable="false" member="pictureImg" />
 				</div>
 				<div class="picture-detail">
 					<h3 data-win-bind="innerText: owner.realname"></h3>
 					<h6 class="posted">posted : <span data-win-bind="innerText: dates.posted"></span></h6>
 					<div class="tags-list" member="tagsList"></div>
-					<p data-win-bind="innerHTML: description._content"></p>
+					<p data-win-bind="innerHTML: description._content WinJSContrib.Bindings.staticHTML"></p>
 
 				</div>
 			</div>
