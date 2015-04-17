@@ -17,17 +17,25 @@
   /*background-color: #222;*/
   pointer-events: none;
 }
-.searchbar .btn-hide {
+.searchbar .actions {
   position: absolute;
   right: 10px;
   top: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 100ms ease;
+  display: flex;
+}
+.searchbar .actions .action {
   width: 40px;
   height: 40px;
   line-height: 40px;
   text-align: center;
-  display: none;
   font-family: 'Segoe UI Symbol';
   font-size: 18pt;
+}
+.searchbar .btn-hide {
+  display: none;
 }
 .searchbar .searchpanel {
   display: flex;
@@ -94,6 +102,10 @@
   width: 100%;
 }
 .expanded .searchbar h1 {
+  opacity: 1;
+  pointer-events: all;
+}
+.expanded .searchbar .actions {
   opacity: 1;
   pointer-events: all;
 }

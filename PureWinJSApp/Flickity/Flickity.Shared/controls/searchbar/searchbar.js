@@ -11,10 +11,16 @@
     		ctrl.searchBtn = ctrl.element.querySelector('#btnSearch');
     		ctrl.recentItemsList = ctrl.element.querySelector('#recentItemsList').winControl;
     		ctrl.btnHide = ctrl.element.querySelector('.btn-hide');
+    		ctrl.btnSettings = ctrl.element.querySelector('.btn-settings');
     		ctrl.recentBlock = ctrl.element.querySelector('.recent');
 
     		ctrl.btnHide.onclick = function () {
     			ctrl.hide();
+    		}
+
+    		ctrl.btnSettings.onclick = function () {
+    			ctrl.hide();
+    			WinJS.Navigation.navigate('/pages/settings/settings.html');
     		}
 
     		ctrl.searchInput.onfocus = ctrl.show.bind(ctrl);

@@ -32,6 +32,9 @@
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.less" />
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.html" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.html" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.less" />
     <Content Include="$(MSBuildThisFileDirectory)scripts\WinJS\css\ui-dark.css" />
     <Content Include="$(MSBuildThisFileDirectory)scripts\WinJS\css\ui-light.css" />
     <Content Include="$(MSBuildThisFileDirectory)scripts\WinJS\fonts\Symbols.ttf" />

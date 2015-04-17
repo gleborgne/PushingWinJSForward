@@ -18,17 +18,27 @@
 		pointer-events: none;
 	}
 
-	.btn-hide {
+	.actions {
 		position: absolute;
 		right: 10px;
 		top: 10px;
-		width: 40px;
-		height: 40px;
-		line-height: 40px;
-		text-align: center;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 100ms ease;
+		display: flex;
+
+		.action {
+			width: 40px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			font-family: 'Segoe UI Symbol';
+			font-size: 18pt;
+		}
+	}
+
+	.btn-hide {
 		display: none;
-		font-family: 'Segoe UI Symbol';
-		font-size: 18pt;
 	}
 
 	.searchpanel {
@@ -113,7 +123,10 @@
 			pointer-events: all;
 		}
 
-
+		.actions{
+			opacity:1;
+			pointer-events: all;
+			}
 
 		.searchpanel {
 			margin-top: 90px;
