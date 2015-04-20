@@ -1,0 +1,150 @@
+﻿.searchbar {
+	display: flex;
+	flex-flow: column nowrap;
+	height: 100%;
+	color: white;
+	justify-content: center;
+
+	h1 {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		padding: 10px 5px;
+		font-size: 48pt;
+		opacity: 0;
+		transition: opacity 300ms ease;
+		/*background-color: #222;*/
+		pointer-events: none;
+	}
+
+	.actions {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 100ms ease;
+		display: flex;
+
+		.action {
+			width: 40px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			font-family: 'Segoe UI Symbol';
+			font-size: 18pt;
+		}
+	}
+
+	.btn-hide {
+		display: none;
+	}
+
+	.searchpanel {
+		display: flex;
+		width: 100%;
+		height: 80px;
+		padding: 10px;
+		box-sizing: border-box;
+		margin-top: 30px;
+		transition: margin-top 200ms ease;
+
+		#txtSearch {
+			flex: 1;
+			align-self: center;
+			border: 1px solid transparent;
+			font-size: 18pt;
+			color: white;
+			transition: color 100ms ease;
+
+			&:focus {
+				border-color: white;
+				color: black;
+			}
+		}
+
+		#btnSearch {
+			font-family: 'Segoe UI Symbol';
+			border: none;
+			background-color: transparent;
+			align-self: center;
+			color: white;
+			min-width: 0;
+		}
+	}
+
+	.lastsearch, .recent {
+		opacity: 0;
+		transition: opacity 500ms ease;
+		box-sizing: border-box;
+
+		h2 {
+			font-size: 1.3rem;
+			text-transform: uppercase;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+	}
+
+	.lastsearch {
+		.lastsearch-items {
+			padding: 10px;
+			box-sizing: border-box;
+		}
+
+		.search-term {
+			font-size: 1.1rem;
+			display: inline-block;
+			background-color: rgba(255,255,255,0.3);
+			padding: 5px 10px;
+			margin-right: 5px;
+			margin-bottom: 5px;
+		}
+	}
+
+	.recent {
+		flex: 1;
+		display: flex;
+		flex-flow: column nowrap;
+
+		#recentItemsList {
+			flex: 1;
+			height: 100%;
+			width: 100%;
+		}
+	}
+}
+
+.expanded {
+	.searchbar {
+		h1 {
+			opacity: 1;
+			pointer-events: all;
+		}
+
+		.actions{
+			opacity:1;
+			pointer-events: all;
+			}
+
+		.searchpanel {
+			margin-top: 90px;
+		}
+
+		.lastsearch, .recent {
+			opacity: 1;
+			display: block;
+		}
+	}
+}
+
+.expanded {
+	#searchBar.hasSearch {
+		.searchbar {
+			.btn-hide {
+				display: block;
+			}
+		}
+	}
+}

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>f7664933-13a7-41e9-b1ea-9d68b0da7bf4</SharedGUID>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)controls\comments\comments.css" />
+    <Content Include="$(MSBuildThisFileDirectory)controls\comments\comments.html" />
+    <Content Include="$(MSBuildThisFileDirectory)controls\comments\comments.js" />
+    <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.css" />
+    <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.es6.js" />
+    <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.less" />
+    <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.html" />
+    <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.js" />
+    <Content Include="$(MSBuildThisFileDirectory)css\apptheme.css" />
+    <Content Include="$(MSBuildThisFileDirectory)css\apptheme.less" />
+    <Content Include="$(MSBuildThisFileDirectory)css\default.css" />
+    <Content Include="$(MSBuildThisFileDirectory)css\default.less" />
+    <Content Include="$(MSBuildThisFileDirectory)default.html" />
+    <Content Include="$(MSBuildThisFileDirectory)js\Flickity.bindings.js" />
+    <Content Include="$(MSBuildThisFileDirectory)js\Flickity.config.js" />
+    <Content Include="$(MSBuildThisFileDirectory)js\FlickrAPI.js" />
+    <Content Include="$(MSBuildThisFileDirectory)js\navigator.js" />
+    <Content Include="$(MSBuildThisFileDirectory)js\default.js" />
+    <Content Include="$(MSBuildThisFileDirectory)js\_reference.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.css" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.less" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.html" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\home\home.css" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\home\home.less" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\home\home.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\home\home.html" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.less" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.html" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.js" />
+    <Content Include="$(MSBuildThisFileDirectory)scripts\winjscontrib\winjscontrib.bindings.js" />
+    <Content Include="$(MSBuildThisFileDirectory)scripts\winjscontrib\winjscontrib.core.js" />
+    <Content Include="$(MSBuildThisFileDirectory)scripts\winjscontrib\winjscontrib.ui.animation.js" />
+    <Content Include="$(MSBuildThisFileDirectory)scripts\winjscontrib\winjscontrib.ui.css" />
+    <Content Include="$(MSBuildThisFileDirectory)scripts\winjscontrib\winjscontrib.ui.navigator.js" />
+    <Content Include="$(MSBuildThisFileDirectory)scripts\winjscontrib\winjscontrib.ui.smartlistlayout.js" />
+    <Content Include="$(MSBuildThisFileDirectory)scripts\WinJS\css\ui-dark.css" />
+    <Content Include="$(MSBuildThisFileDirectory)scripts\WinJS\css\ui-light.css" />
+    <Content Include="$(MSBuildThisFileDirectory)scripts\WinJS\fonts\Symbols.ttf" />
+    <Content Include="$(MSBuildThisFileDirectory)scripts\WinJS\js\en-US\ui.strings.js" />
+    <Content Include="$(MSBuildThisFileDirectory)scripts\WinJS\js\WinJS.intellisense-setup.js" />
+    <Content Include="$(MSBuildThisFileDirectory)scripts\WinJS\js\WinJS.intellisense.js" />
+    <Content Include="$(MSBuildThisFileDirectory)scripts\WinJS\js\WinJS.js" />
+  </ItemGroup>
+</Project>
