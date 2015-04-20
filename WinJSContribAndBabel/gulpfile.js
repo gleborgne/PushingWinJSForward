@@ -36,7 +36,7 @@ gulp.task('styles', function() {
 });
 
 function babelPipe(sources) {
-    return gulp.src(['Flickity/**/*.es6.js', '!Flickity/**/bin/**/*.es6.js', '!Flickity/**/bld/**/*.es6.js'], { base : '.' })
+    return gulp.src(sources, { base : '.' })
         .pipe(plumber({errorHandler: onError}))
 		.pipe(sourcemaps.init())
         .pipe(babel())        
@@ -45,7 +45,7 @@ function babelPipe(sources) {
         	path.basename = path.basename.substr(0, idx);
         	path.extname = '.js';
         }))
-        .pipe(sourcemaps.write('.'))
+        .pipe(sourcemaps.write(''))
         .pipe(gulp.dest(''));
 }
 

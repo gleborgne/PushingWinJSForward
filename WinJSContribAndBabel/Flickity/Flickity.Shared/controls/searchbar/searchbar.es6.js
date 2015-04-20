@@ -8,7 +8,8 @@
         }
 
         processed(element, options) {
-            var ctrl = this;
+        	var ctrl = this;
+
             ctrl.mainHeader = document.getElementById('appheader');         
             ctrl.eventTracker.addEvent(ctrl.searchInput, 'focus', ctrl.show.bind(ctrl));            
             ctrl.loadLastSearches();

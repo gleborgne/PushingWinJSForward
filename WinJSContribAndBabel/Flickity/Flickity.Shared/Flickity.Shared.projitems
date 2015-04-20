@@ -8,9 +8,12 @@
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)controls\comments\comments.css" />
     <Content Include="$(MSBuildThisFileDirectory)controls\comments\comments.html" />
+    <Content Include="$(MSBuildThisFileDirectory)controls\comments\comments.es6.js" />
     <Content Include="$(MSBuildThisFileDirectory)controls\comments\comments.js" />
+    <Content Include="$(MSBuildThisFileDirectory)controls\comments\comments.js.map" />
     <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.css" />
     <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.es6.js" />
+    <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.js.map" />
     <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.less" />
     <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.html" />
     <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.js" />
@@ -26,12 +29,16 @@
     <Content Include="$(MSBuildThisFileDirectory)js\default.js" />
     <Content Include="$(MSBuildThisFileDirectory)js\_reference.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.css" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.js.map" />
     <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.less" />
     <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.html" />
-    <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.es6.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.css" />
-    <Content Include="$(MSBuildThisFileDirectory)pages\home\home.less" />
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\home\home.js.map" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\home\home.less" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\home\home.es6.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.html" />
     <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.less" />
     <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.html" />

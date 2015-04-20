@@ -18,6 +18,7 @@ var _createClass = (function () { function defineProperties(target, props) { for
             key: 'processed',
             value: function processed(element, options) {
                 var ctrl = this;
+
                 ctrl.mainHeader = document.getElementById('appheader');
                 ctrl.eventTracker.addEvent(ctrl.searchInput, 'focus', ctrl.show.bind(ctrl));
                 ctrl.loadLastSearches();
