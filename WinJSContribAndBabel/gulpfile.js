@@ -38,14 +38,22 @@ gulp.task('styles', function() {
 function babelPipe(sources) {
     return gulp.src(sources, { base : '.' })
         .pipe(plumber({errorHandler: onError}))
-		.pipe(sourcemaps.init())
+		.pipe(sourcemaps.init({ debug: true }))
         .pipe(babel())        
         .pipe(rename(function(path){
         	var idx = path.basename.indexOf('.es6');
         	path.basename = path.basename.substr(0, idx);
         	path.extname = '.js';
         }))
-        .pipe(sourcemaps.write(''))
+        .pipe(sourcemaps.write('.', {
+        	sourceRoot: function(file){
+        		var filename = file.sourceMap.sources[0];
+        		filename = filename.substr(filename.lastIndexOf('/')+1);
+        		console.log(filename)
+        		file.sourceMap.sources = [filename];
+        		return ' ';
+        	}
+        }))
         .pipe(gulp.dest(''));
 }
 
