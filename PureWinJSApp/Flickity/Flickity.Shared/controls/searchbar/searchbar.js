@@ -14,17 +14,14 @@
     		ctrl.btnSettings = ctrl.element.querySelector('.btn-settings');
     		ctrl.recentBlock = ctrl.element.querySelector('.recent');
 
-    		ctrl.btnHide.onclick = function () {
-    			ctrl.hide();
-    		}
-
-    		ctrl.btnSettings.onclick = function () {
-    			ctrl.hide();
-    			WinJS.Navigation.navigate('/pages/settings/settings.html');
-    		}
-
-    		ctrl.searchInput.onfocus = ctrl.show.bind(ctrl);
-    		ctrl.searchBtn.onclick = ctrl.runSearchFromInput.bind(ctrl);
+    		ctrl.hideBinded = ctrl.hide.bind(ctrl);    		
+    		ctrl.openSettingsBinded = ctrl.openSettings.bind(ctrl);    		
+    		ctrl.showBinded = ctrl.show.bind(ctrl);    		
+    		ctrl.runSearchFromInputBinded = ctrl.runSearchFromInput.bind(ctrl);    		
+    		ctrl.btnHide.addEventListener('click', ctrl.hideBinded);
+    		ctrl.btnSettings.addEventListener('click', ctrl.openSettingsBinded);
+    		ctrl.searchInput.addEventListener('focus', ctrl.showBinded);
+    		ctrl.searchBtn.addEventListener('click', ctrl.runSearchFromInputBinded);
 
     		ctrl.loadLastSearches();
 
@@ -46,6 +43,11 @@
     		WinJS.Application.addEventListener('search', function (arg) {
     			ctrl.runSearch(arg.term);
     		});
+    	},
+
+    	openSettings: function () {
+    		this.hide();
+    		WinJS.Navigation.navigate('/pages/settings/settings.html');
     	},
 
     	recentItemsError: function (err) {
@@ -136,6 +138,14 @@
     		} else if (!q.matches && currentLayout.orientation == 'vertical') {
     			ctrl.recentItemsList.layout = new WinJS.UI.GridLayout({ orientation: 'horizontal' });
     		}
+    	},
+
+    	unload: function () {
+    		var ctrl = this;
+    		ctrl.btnHide.removeEventListener('click', ctrl.hideBinded);
+    		ctrl.btnSettings.removeEventListener('click', ctrl.openSettingsBinded);
+    		ctrl.searchInput.removeEventListener('focus', ctrl.showBinded);
+    		ctrl.searchBtn.removeEventListener('click', ctrl.runSearchFromInputBinded);
     	}
     });
 
