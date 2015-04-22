@@ -315,6 +315,8 @@ var WinJSContrib;
         //set object property value based on property name. Property name is a string containing the name of the property, 
         //or the name of the property with an indexer, ex: myproperty[2] (to get item in a array)
         function setobject(obj, prop, data) {
+            if (!obj)
+                return;
             if (WinJSContrib.Utils.hasValue(prop)) {
                 if (obj.setProperty) {
                     obj.setProperty(prop, data);
@@ -2127,8 +2129,8 @@ var WinJSContrib;
                         options.oncreate(elementCtrl.element, args);
                     }
                     if (options.oninit) {
-                        elementCtrl.elementReady.then(function () {
-                            options.oninit(elementCtrl.element, args);
+                        elementCtrl.pageLifeCycle.steps.init.attach(function () {
+                            return options.oninit(elementCtrl.element, args);
                         });
                     }
                     if (elementCtrl.enterPageAnimation || options.enterPage) {
@@ -2146,27 +2148,26 @@ var WinJSContrib;
                             else {
                                 elts = page.element;
                             }
-                            //this.dispatchEvent("pageContentReady", navargs);
                             if (elts)
                                 return page._enterAnimation(elts);
                         };
                     }
-                    //        if (options.closeOldPagePromise) {
-                    //elementCtrl.pageLifeCycle.steps.layout.attach(function () {
-                    //                return options.closeOldPagePromise;
-                    //            });
-                    //        }			
-                    elementCtrl.contentReadyComplete = elementCtrl.renderComplete.then(function () {
-                        if (options.onrender)
+                    if (options.onrender) {
+                        elementCtrl.pageLifeCycle.steps.process.attach(function () {
                             options.onrender(elementCtrl.element, args);
-                        if (!WinJSContrib.UI.disableAutoResources)
+                        });
+                    }
+                    if (!WinJSContrib.UI.disableAutoResources) {
+                        elementCtrl.pageLifeCycle.steps.process.attach(function () {
                             return WinJS.Resources.processAll(element);
-                    });
-                    elementCtrl.readyComplete.then(function (control) {
-                        if (options.closeOldPagePromise) {
+                        });
+                    }
+                    if (options.closeOldPagePromise) {
+                        elementCtrl.pageLifeCycle.steps.ready.attach(function () {
                             return options.closeOldPagePromise;
-                        }
-                    }).then(function (control) {
+                        });
+                    }
+                    elementCtrl.pageLifeCycle.steps.ready.attach(function () {
                         if (options.onready)
                             options.onready(elementCtrl.element, args);
                         if (elementCtrl.enterPageAnimation) {
@@ -2175,7 +2176,8 @@ var WinJSContrib;
                         else {
                             elementCtrl.element.style.opacity = '';
                         }
-                    }).then(fragmentCompleted, fragmentError);
+                    });
+                    elementCtrl.pageLifeCycle.steps.ready.promise.then(fragmentCompleted, fragmentError);
                 }
                 var elementCtrl = new pageConstructor(element, args, preparePageControl, parented);
                 return fragmentPromise;
@@ -2211,8 +2213,8 @@ var WinJSContrib;
                 PageLifeCycleStep.prototype.resolve = function (arg) {
                     var _this = this;
                     this.isDone = true;
-                    var promises = [];
                     if (this.queue && this.queue.length) {
+                        var promises = [];
                         this.queue.forEach(function (q) {
                             promises.push(new WinJS.Promise(function (c, e) {
                                 try {
@@ -2226,12 +2228,16 @@ var WinJSContrib;
                             }));
                         });
                         this.queue = null;
+                        return WinJS.Promise.join(promises).then(function () {
+                            _this._resolvePromise(arg);
+                            return _this.promise;
+                        }, this.reject.bind(this));
                     }
-                    return WinJS.Promise.join(promises).then(function () {
-                        _this._resolvePromise(arg);
-                        //console.log('resolved ' + this.stepName);
-                        return _this.promise;
-                    }, this.reject.bind(this));
+                    else {
+                        this.queue = null;
+                        this._resolvePromise(arg);
+                        return this.promise;
+                    }
                 };
                 PageLifeCycleStep.prototype.reject = function (arg) {
                     this.isDone = true;
@@ -2246,7 +2252,7 @@ var WinJSContrib;
                 'use strict';
                 if (!_Global.document || !_CorePages)
                     return;
-                var viewMap = _CorePages._viewMap || {};
+                var viewMap = _CorePages._viewMap || _CorePages.viewMap || {};
                 //this property allows defining mixins applyed to all pages
                 function abs(uri) {
                     var a = _Global.document.createElement("a");
@@ -2352,25 +2358,21 @@ var WinJSContrib;
                     }
                     return base;
                 }
-                function mergeJavaScriptClass(targetCtor, sourcePrototype) {
-                    if (sourcePrototype) {
-                        if (!sourcePrototype.__proto__.hasOwnProperty('hasOwnProperty')) {
-                            //if prototype is not "object" we start by merging it's parent members
-                            //by merging from parent to child we ensure that inheritance chain is respected
-                            mergeJavaScriptClass(targetCtor, sourcePrototype.__proto__);
+                function mergeJavaScriptClass(baseCtor, classDef) {
+                    var keys = Object.keys(baseCtor.prototype);
+                    keys.forEach(function (k) {
+                        if (classDef.prototype[k] === undefined) {
+                            classDef.prototype[k] = baseCtor.prototype[k];
                         }
-                        return injectMixin(targetCtor, sourcePrototype);
-                    }
-                    return targetCtor;
+                    });
+                    return baseCtor;
                 }
                 function addMembers(ctor, members) {
                     if (!members)
                         return ctor;
                     if (typeof members == 'function') {
-                        if (!ctor.prototype._attachedConstructors)
-                            ctor.prototype._attachedConstructors = [];
-                        ctor.prototype._attachedConstructors.push(members);
-                        return mergeJavaScriptClass(ctor, members.prototype);
+                        ctor.prototype._attachedConstructor = members;
+                        return mergeJavaScriptClass(ctor, members);
                     }
                     else if (typeof members == 'object') {
                         return injectMixin(ctor, members);
@@ -2388,14 +2390,23 @@ var WinJSContrib;
                     }
                     var load = Promise.timeout().then(function Pages_load() {
                         return that.load(uri);
+                    }).then(function (loadResult) {
+                        //if page is defined by Js classes, call class constructors 
+                        if (that._attachedConstructor) {
+                            var realControl = new that._attachedConstructor(element, options);
+                            element.winControl = realControl;
+                            var keys = Object.keys(that);
+                            keys.forEach(function (k) {
+                                realControl[k] = that[k];
+                            });
+                            realControl.pageLifeCycle.page = realControl;
+                            that.pageControl = realControl;
+                            that.dismissed = true;
+                            that = realControl;
+                        }
+                        return loadResult;
                     });
                     var renderCalled = load.then(function Pages_init(loadResult) {
-                        //if page is defined by Js classes, call class constructors 
-                        if (that._attachedConstructors) {
-                            that._attachedConstructors.forEach(function (ct) {
-                                ct.apply(that, [element, options]);
-                            });
-                        }
                         return Promise.join({
                             loadResult: loadResult,
                             initResult: that.init(element, options)
@@ -2453,7 +2464,7 @@ var WinJSContrib;
                         that.ready(element, options);
                         that.pageLifeCycle.ended = new Date();
                         that.pageLifeCycle.delta = that.pageLifeCycle.ended - that.pageLifeCycle.created;
-                        console.log('navigation to ' + uri + ' took ' + that.pageLifeCycle.delta + 'ms');
+                        //console.log('navigation to ' + uri + ' took ' + that.pageLifeCycle.delta + 'ms');
                         broadcast(that, element, 'pageReady', [element, options]);
                     }).then(function (result) {
                         return that.pageLifeCycle.steps.ready.resolve();
@@ -2525,7 +2536,7 @@ var WinJSContrib;
                                     render: new PageLifeCycleStep(that, 'render', null),
                                     process: new PageLifeCycleStep(that, 'process', parent),
                                     layout: new PageLifeCycleStep(that, 'layout', parent),
-                                    ready: new PageLifeCycleStep(that, 'ready', parent),
+                                    ready: new PageLifeCycleStep(that, 'ready', parent)
                                 },
                                 initialDisplay: null
                             };
@@ -2579,6 +2590,9 @@ var WinJSContrib;
                             render(abs(uri), _Global.document.body);
                         }, true);
                     }
+                    //in case we are on WinJS<4 we reference members on WinJS Core Pages
+                    if (!_CorePages.viewMap && !_CorePages._viewMap && typeof members !== 'function')
+                        _Pages._corePages.define(uri, members);
                     return ctor;
                 }
                 function render(uri, element, options, parentedPromise) {
@@ -2607,7 +2621,7 @@ var WinJSContrib;
                     render: _CorePages.render,
                     define: _CorePages.define,
                     _remove: _CorePages._remove,
-                    _viewMap: _CorePages._viewMap,
+                    _viewMap: viewMap,
                 };
                 var pageOverride = {
                     define: Pages_define,
