@@ -17,24 +17,24 @@ var _createClass = (function () { function defineProperties(target, props) { for
         _createClass(SearchBarControl, [{
             key: 'processed',
             value: function processed(element, options) {
-                var ctrl = this;
+                var _this = this;
 
-                ctrl.mainHeader = document.getElementById('appheader');
-                ctrl.eventTracker.addEvent(ctrl.searchInput, 'focus', ctrl.show.bind(ctrl));
-                ctrl.loadLastSearches();
+                this.mainHeader = document.getElementById('appheader');
+                this.eventTracker.addEvent(this.searchInput, 'focus', this.show.bind(this));
+                this.loadLastSearches();
 
-                ctrl.recentItemsPromise = Flickity.Api.recent(0, 80).then(function (items) {
-                    ctrl.recentItemsList.itemDataSource = new WinJS.Binding.List(items.photos.photo).dataSource;
-                    ctrl.recentItemsList.oniteminvoked = function (arg) {
+                this.recentItemsPromise = Flickity.Api.recent(0, 80).then(function (items) {
+                    _this.recentItemsList.itemDataSource = new WinJS.Binding.List(items.photos.photo).dataSource;
+                    _this.recentItemsList.oniteminvoked = function (arg) {
                         arg.detail.itemPromise.then(function (item) {
-                            ctrl.hide();
+                            _this.hide();
                             WinJS.Navigation.navigate('/pages/detail/detail.html', { picture: item.data });
                         });
                     };
-                }, ctrl.recentItemsError.bind(ctrl));
+                }, this.recentItemsError.bind(this));
 
-                ctrl.eventTracker.addEvent(WinJS.Application, 'search', function (arg) {
-                    ctrl.runSearch(arg.term);
+                this.eventTracker.addEvent(WinJS.Application, 'search', function (arg) {
+                    _this.runSearch(arg.term);
                 });
             }
         }, {
@@ -45,79 +45,77 @@ var _createClass = (function () { function defineProperties(target, props) { for
         }, {
             key: 'loadLastSearches',
             value: function loadLastSearches() {
-                var _this = this;
+                var _this2 = this;
 
-                var ctrl = this;
                 var lastSearches = localStorage.lastSearches;
                 if (!lastSearches) lastSearches = [];else lastSearches = JSON.parse(lastSearches);
 
-                ctrl.lastSearches = lastSearches;
-                ctrl.lastsearchItems.innerHTML = '';
+                this.lastSearches = lastSearches;
+                this.lastsearchItems.innerHTML = '';
 
                 lastSearches.forEach(function (s) {
                     var item = document.createElement('SPAN');
                     item.className = 'search-term';
                     item.innerText = s;
                     WinJSContrib.UI.tap(item, function () {
-                        _this.runSearch(s);
+                        _this2.runSearch(s);
                     });
-                    ctrl.lastsearchItems.appendChild(item);
+                    _this2.lastsearchItems.appendChild(item);
                 });
             }
         }, {
             key: 'addSearchTerm',
             value: function addSearchTerm(s) {
-                var ctrl = this;
-                while (ctrl.lastSearches.indexOf(s) >= 0) {
-                    var idx = ctrl.lastSearches.indexOf(s);
-                    ctrl.lastSearches.splice(idx, 1);
+                while (this.lastSearches.indexOf(s) >= 0) {
+                    var idx = this.lastSearches.indexOf(s);
+                    this.lastSearches.splice(idx, 1);
                 }
-                ctrl.lastSearches.splice(0, 0, s);
-                localStorage.lastSearches = JSON.stringify(ctrl.lastSearches.slice(0, 10));
+                this.lastSearches.splice(0, 0, s);
+                localStorage.lastSearches = JSON.stringify(this.lastSearches.slice(0, 10));
             }
         }, {
             key: 'runSearchFromInput',
             value: function runSearchFromInput() {
-                var ctrl = this;
-                ctrl.runSearch(ctrl.searchInput.value);
+                this.runSearch(this.searchInput.value);
             }
         }, {
             key: 'runSearch',
             value: function runSearch(searchTerm) {
-                var ctrl = this;
+                var _this3 = this;
+
                 if (searchTerm && searchTerm.length > 2) {
-                    ctrl.searchInput.value = searchTerm;
-                    ctrl.element.classList.add('hasSearch');
-                    ctrl.addSearchTerm(searchTerm);
-                    ctrl.searchInput.blur();
-                    ctrl.hide();
+                    this.searchInput.value = searchTerm;
+                    this.element.classList.add('hasSearch');
+                    this.addSearchTerm(searchTerm);
+                    this.searchInput.blur();
+                    this.hide();
                     setImmediate(function () {
-                        WinJS.Navigation.navigate('/pages/home/home.html', { search: ctrl.searchInput.value });
-                        ctrl.loadLastSearches();
+                        WinJS.Navigation.navigate('/pages/home/home.html', { search: _this3.searchInput.value });
+                        _this3.loadLastSearches();
                     });
                 }
             }
         }, {
             key: 'show',
             value: function show() {
-                var ctrl = this;
+                var _this4 = this;
 
-                ctrl.mainHeader.classList.add('expanded');
+                this.mainHeader.classList.add('expanded');
                 setTimeout(function () {
-                    ctrl.recentBlock.style.opacity = '0';
-                    ctrl.recentItemsList.element.style.display = '';
-                    WinJS.UI.Animation.fadeIn(ctrl.recentBlock);
+                    _this4.recentBlock.style.opacity = '0';
+                    _this4.recentItemsList.element.style.display = '';
+                    WinJS.UI.Animation.fadeIn(_this4.recentBlock);
                 }, 300);
             }
         }, {
             key: 'hide',
             value: function hide() {
-                var ctrl = this;
+                var _this5 = this;
 
-                WinJS.UI.Animation.fadeOut(ctrl.recentBlock).then(function () {
-                    ctrl.recentItemsList.element.style.display = 'none';
-                    ctrl.searchInput.blur();
-                    ctrl.mainHeader.classList.remove('expanded');
+                WinJS.UI.Animation.fadeOut(this.recentBlock).then(function () {
+                    _this5.recentItemsList.element.style.display = 'none';
+                    _this5.searchInput.blur();
+                    _this5.mainHeader.classList.remove('expanded');
                 });
             }
         }]);

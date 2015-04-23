@@ -8,24 +8,22 @@
         }
 
         processed(element, options) {
-        	var ctrl = this;
+        	this.mainHeader = document.getElementById('appheader');         
+            this.eventTracker.addEvent(this.searchInput, 'focus', this.show.bind(this));            
+            this.loadLastSearches();
 
-            ctrl.mainHeader = document.getElementById('appheader');         
-            ctrl.eventTracker.addEvent(ctrl.searchInput, 'focus', ctrl.show.bind(ctrl));            
-            ctrl.loadLastSearches();
-
-            ctrl.recentItemsPromise = Flickity.Api.recent(0, 80).then(function (items) {
-                ctrl.recentItemsList.itemDataSource = new WinJS.Binding.List(items.photos.photo).dataSource;
-                ctrl.recentItemsList.oniteminvoked = function (arg) {
-                    arg.detail.itemPromise.then(function (item) {
-                        ctrl.hide();
+            this.recentItemsPromise = Flickity.Api.recent(0, 80).then((items) => {
+                this.recentItemsList.itemDataSource = new WinJS.Binding.List(items.photos.photo).dataSource;
+                this.recentItemsList.oniteminvoked = (arg) => {
+                    arg.detail.itemPromise.then((item) => {
+                        this.hide();
                         WinJS.Navigation.navigate('/pages/detail/detail.html', { picture: item.data });
                     });
                 };
-            }, ctrl.recentItemsError.bind(ctrl));
+            }, this.recentItemsError.bind(this));
 
-            ctrl.eventTracker.addEvent(WinJS.Application, 'search', function (arg) {
-                ctrl.runSearch(arg.term);
+            this.eventTracker.addEvent(WinJS.Application, 'search', (arg) => {
+                this.runSearch(arg.term);
             });
         }
 
@@ -34,15 +32,14 @@
         }
 
         loadLastSearches() {
-            var ctrl = this;
             var lastSearches = localStorage['lastSearches'];
             if (!lastSearches)
                 lastSearches = [];
             else
                 lastSearches = JSON.parse(lastSearches);
 
-            ctrl.lastSearches = lastSearches;
-            ctrl.lastsearchItems.innerHTML = '';
+            this.lastSearches = lastSearches;
+            this.lastsearchItems.innerHTML = '';
 
             lastSearches.forEach((s) => {
                 var item = document.createElement('SPAN');
@@ -51,59 +48,52 @@
                 WinJSContrib.UI.tap(item, () => {
                     this.runSearch(s);
                 });
-                ctrl.lastsearchItems.appendChild(item);
+                this.lastsearchItems.appendChild(item);
             });
         }
 
         addSearchTerm(s) {
-            var ctrl = this;
-            while (ctrl.lastSearches.indexOf(s) >= 0) {
-                var idx = ctrl.lastSearches.indexOf(s);
-                ctrl.lastSearches.splice(idx, 1);
+            while (this.lastSearches.indexOf(s) >= 0) {
+                var idx = this.lastSearches.indexOf(s);
+                this.lastSearches.splice(idx, 1);
             }
-            ctrl.lastSearches.splice(0, 0, s);
-            localStorage['lastSearches'] = JSON.stringify(ctrl.lastSearches.slice(0, 10));
+            this.lastSearches.splice(0, 0, s);
+            localStorage['lastSearches'] = JSON.stringify(this.lastSearches.slice(0, 10));
         }
 
         runSearchFromInput() {
-            var ctrl = this;
-            ctrl.runSearch(ctrl.searchInput.value);
+            this.runSearch(this.searchInput.value);
         }
 
         runSearch(searchTerm) {
-            var ctrl = this;
             if (searchTerm && searchTerm.length > 2) {
-                ctrl.searchInput.value = searchTerm;
-                ctrl.element.classList.add('hasSearch');
-                ctrl.addSearchTerm(searchTerm);
-                ctrl.searchInput.blur();
-                ctrl.hide();
+                this.searchInput.value = searchTerm;
+                this.element.classList.add('hasSearch');
+                this.addSearchTerm(searchTerm);
+                this.searchInput.blur();
+                this.hide();
                 setImmediate(() => {
-                    WinJS.Navigation.navigate('/pages/home/home.html', { search: ctrl.searchInput.value });
-                    ctrl.loadLastSearches();
+                    WinJS.Navigation.navigate('/pages/home/home.html', { search: this.searchInput.value });
+                    this.loadLastSearches();
                 });
 
             }
         }
 
         show() {
-            var ctrl = this;
-            
-            ctrl.mainHeader.classList.add('expanded');
+            this.mainHeader.classList.add('expanded');
             setTimeout(() => {
-                ctrl.recentBlock.style.opacity = '0';
-                ctrl.recentItemsList.element.style.display = '';
-                WinJS.UI.Animation.fadeIn(ctrl.recentBlock);
+                this.recentBlock.style.opacity = '0';
+                this.recentItemsList.element.style.display = '';
+                WinJS.UI.Animation.fadeIn(this.recentBlock);
             }, 300);
         }
 
         hide() {
-            var ctrl = this;
-
-            WinJS.UI.Animation.fadeOut(ctrl.recentBlock).then(function () {
-                ctrl.recentItemsList.element.style.display = 'none';
-                ctrl.searchInput.blur();
-                ctrl.mainHeader.classList.remove('expanded');
+            WinJS.UI.Animation.fadeOut(this.recentBlock).then(() => {
+                this.recentItemsList.element.style.display = 'none';
+                this.searchInput.blur();
+                this.mainHeader.classList.remove('expanded');
             });
         }
     }
