@@ -9,7 +9,7 @@
 			if (options.search){
 				page.dataLoadPromise = Flickity.Api.search(options.search, 0, 100).then(function (items) {
 					page.pictures = items;
-					return items;
+					return items.photos.photo;
 				}, page.showError.bind(page));
 			}
     	},
@@ -22,12 +22,6 @@
     	processed: function (element, options) {
     		var page = this;
 
-    		page.eventTracker.addEvent(page.picturesList, 'iteminvoked', page.openDetail.bind(page));
-    		if (page.dataLoadPromise) {
-    			page.dataLoadPromise.then(function () {    				
-    				page.picturesList.itemDataSource = new WinJS.Binding.List(page.pictures.photos.photo).dataSource;    				
-    			});
-    		}
     	},
 
     	openDetail: function (arg) {

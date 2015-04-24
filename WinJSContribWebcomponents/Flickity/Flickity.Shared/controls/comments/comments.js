@@ -35,4 +35,9 @@
     });
 
     WinJS.Namespace.define('Flickity.UI', { Comments: CommentsCtor });
+    if (WinJSContrib.UI.WebComponents) {
+    	WinJSContrib.UI.WebComponents.register('flickity-comments', CommentsCtor, {
+			props : ['picture']
+    	});
+    }
 })();
