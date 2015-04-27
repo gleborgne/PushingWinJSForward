@@ -148,6 +148,7 @@
     </Content>
     <Content Include="..\Flickity.Shared\pages\detail\detail.css">
       <Link>pages\detail\detail.css</Link>
+      <DependentUpon>detail.less</DependentUpon>
     </Content>
     <Content Include="..\Flickity.Shared\pages\detail\detail.html">
       <Link>pages\detail\detail.html</Link>

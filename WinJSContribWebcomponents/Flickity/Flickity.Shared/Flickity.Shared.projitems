@@ -37,9 +37,15 @@
     <Content Include="$(MSBuildThisFileDirectory)js\default.js" />
     <Content Include="$(MSBuildThisFileDirectory)js\_reference.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.css" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.css.map">
+      <DependentUpon>detail.css</DependentUpon>
+    </Content>
     <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.less" />
     <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.html" />
     <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\detail\detail.min.css">
+      <DependentUpon>detail.css</DependentUpon>
+    </Content>
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.css" />
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.less" />
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.js" />

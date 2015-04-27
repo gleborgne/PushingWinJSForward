@@ -1,7 +1,9 @@
-.detail-page section[role=main] {
+﻿.detail-page section[role=main] {
   position: relative;
   display: flex;
   flex-flow: column nowrap;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .detail-page section[role=main] .picture-bloc {
   flex: 1;
@@ -33,6 +35,9 @@
   background-color: #DDD;
   overflow-x: hidden;
   overflow-y: auto;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .detail-page section[role=main] .picture-bloc .picture-detail .tags-list .tag {
   display: inline-block;
@@ -68,3 +73,4 @@
     overflow: hidden;
   }
 }
+/*# sourceMappingURL=detail.css.map */
