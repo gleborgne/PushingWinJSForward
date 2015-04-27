@@ -7,9 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Flickity", "Flickity", "{E0
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Flickity.Shared", "Flickity\Flickity.Shared\Flickity.Shared.shproj", "{F7664933-13A7-41E9-B1EA-9D68B0DA7BF4}"
 EndProject
-Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "Flickity.Windows", "Flickity\Flickity.Windows\Flickity.Windows.jsproj", "{1A7C9A22-E8F2-40B4-B5C7-E6EA08BD2A4E}"
-EndProject
-Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "Flickity.WindowsPhone", "Flickity\Flickity.WindowsPhone\Flickity.WindowsPhone.jsproj", "{76F18D1C-B0A0-43BD-A51B-BC6A59F48205}"
+Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "Flickity.Cordova", "Flickity\Flickity.Cordova\Flickity.Cordova.jsproj", "{47958273-A5F4-4EAD-8A28-59C2C4A8AB16}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
