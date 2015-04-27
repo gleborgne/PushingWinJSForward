@@ -1,1 +1,0 @@
-(robocopy ..\Flickity.Shared\ . /E /XF Flickity.Shared.*)^& IF %ERRORLEVEL% LEQ 1 exit 0

@@ -110,81 +110,44 @@
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="..\Flickity.Shared\controls\comments\comments.css">
-      <Link>controls\comments\comments.css</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\controls\comments\comments.html">
-      <Link>controls\comments\comments.html</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\controls\comments\comments.js">
-      <Link>controls\comments\comments.js</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\controls\searchbar\searchbar.css">
-      <Link>controls\searchbar\searchbar.css</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\controls\searchbar\searchbar.html">
-      <Link>controls\searchbar\searchbar.html</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\controls\searchbar\searchbar.js">
-      <Link>controls\searchbar\searchbar.js</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\controls\searchbar\searchbar.less">
-      <Link>controls\searchbar\searchbar.less</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\js\Flickity.bindings.js">
-      <Link>js\Flickity.bindings.js</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\js\Flickity.config.js">
-      <Link>js\Flickity.config.js</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\js\FlickrAPI.js">
-      <Link>js\FlickrAPI.js</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\js\navigator.js">
-      <Link>js\navigator.js</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\js\_reference.js">
-      <Link>js\_reference.js</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\pages\detail\detail.css">
-      <Link>pages\detail\detail.css</Link>
-      <DependentUpon>detail.less</DependentUpon>
-    </Content>
-    <Content Include="..\Flickity.Shared\pages\detail\detail.html">
-      <Link>pages\detail\detail.html</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\pages\detail\detail.js">
-      <Link>pages\detail\detail.js</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\pages\detail\detail.less">
-      <Link>pages\detail\detail.less</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\pages\home\home.css">
-      <Link>pages\home\home.css</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\pages\home\home.html">
-      <Link>pages\home\home.html</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\pages\home\home.js">
-      <Link>pages\home\home.js</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\pages\home\home.less">
-      <Link>pages\home\home.less</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\pages\settings\settings.css">
-      <Link>pages\settings\settings.css</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\pages\settings\settings.html">
-      <Link>pages\settings\settings.html</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\pages\settings\settings.js">
-      <Link>pages\settings\settings.js</Link>
-    </Content>
-    <Content Include="..\Flickity.Shared\pages\settings\settings.less">
-      <Link>pages\settings\settings.less</Link>
-    </Content>
-    <Folder Include="controls\comments\" />
-    <Folder Include="controls\searchbar\" />
+    <Content Include="css\apptheme.css" />
+    <Content Include="css\apptheme.less" />
+    <Content Include="css\default.css" />
+    <Content Include="css\default.less" />
+    <Content Include="css\default.min.css" />
+    <Content Include="js\default.js" />
+    <Content Include="js\Flickity.bindings.js" />
+    <Content Include="js\Flickity.config.js" />
+    <Content Include="js\FlickrAPI.js" />
+    <Content Include="js\navigator.js" />
+    <Content Include="js\_reference.js" />
+    <Content Include="pages\detail\detail.css" />
+    <Content Include="pages\detail\detail.html" />
+    <Content Include="pages\detail\detail.js" />
+    <Content Include="pages\detail\detail.less" />
+    <Content Include="pages\detail\detail.min.css" />
+    <Content Include="pages\home\home.css" />
+    <Content Include="pages\home\home.html" />
+    <Content Include="pages\home\home.js" />
+    <Content Include="pages\home\home.less" />
+    <Content Include="pages\settings\settings.css" />
+    <Content Include="pages\settings\settings.html" />
+    <Content Include="pages\settings\settings.js" />
+    <Content Include="pages\settings\settings.less" />
+    <Content Include="scripts\winjscontrib\winjscontrib.bindings.js" />
+    <Content Include="scripts\winjscontrib\winjscontrib.core.js" />
+    <Content Include="scripts\winjscontrib\winjscontrib.ui.animation.js" />
+    <Content Include="scripts\winjscontrib\winjscontrib.ui.css" />
+    <Content Include="scripts\winjscontrib\winjscontrib.ui.navigator.js" />
+    <Content Include="scripts\winjscontrib\winjscontrib.ui.smartlistlayout.js" />
+    <Content Include="scripts\winjscontrib\winjscontrib.ui.webcomponents.js" />
+    <Content Include="scripts\WinJS\css\ui-dark.css" />
+    <Content Include="scripts\WinJS\css\ui-light.css" />
+    <Content Include="scripts\WinJS\fonts\Symbols.ttf" />
+    <Content Include="scripts\WinJS\js\en-US\ui.strings.js" />
+    <Content Include="scripts\WinJS\js\WinJS.intellisense-setup.js" />
+    <Content Include="scripts\WinJS\js\WinJS.intellisense.js" />
+    <Content Include="scripts\WinJS\js\WinJS.js" />
     <Folder Include="images\" />
     <Content Include="merges\android\scripts\android2.3-jscompat.js" />
     <Content Include="merges\android\scripts\platformOverrides.js" />
@@ -192,10 +155,6 @@
     <Content Include="merges\windows\scripts\platformOverrides.js" />
     <Content Include="merges\windows\scripts\winstore-jscompat.js" />
     <Folder Include="merges\wp8\" />
-    <Folder Include="js\" />
-    <Folder Include="pages\detail\" />
-    <Folder Include="pages\home\" />
-    <Folder Include="pages\settings\" />
     <Folder Include="res\icons\android\" />
     <Folder Include="res\icons\ios\" />
     <Folder Include="res\icons\wp8\" />
@@ -210,7 +169,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="index.html" />
-    <Content Include="prebuild.bat" />
     <Content Include="scripts\index.js" />
     <Content Include="scripts\platformOverrides.js" />
     <Content Include="css\index.css" />
@@ -289,10 +247,7 @@
   <PropertyGroup>
     <TargetPlatformIdentifier>MDD</TargetPlatformIdentifier>
   </PropertyGroup>
-  <Target Name="BeforeBuild">
-    <Message Text="### BeforeBuild ###" Importance="high" />
-    <Exec Command="prebuild.bat" />
-  </Target>
+
   <Target Name="EnsureBuildPrerequisites">
     <!-- These errors will trigger if building from inside Visual Studio and requirements could not be determined -->
     <Error Condition="$(MDAPropertiesEvaluated) == 'true' And $(NodeJsDir) == ''" Text="Path to NodeJs could not be determined. Please check that NodeJs has been installed." />
