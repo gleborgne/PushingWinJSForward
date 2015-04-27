@@ -3,7 +3,7 @@
 (function () {
     "use strict";
 
-    var CommentsCtor = WinJS.UI.Pages.define("/controls/comments/comments.html", {
+    var CommentsCtor = WinJS.UI.Pages.define("./controls/comments/comments.html", {
     	picture: {
     		get: function () {
     			return this._picture;

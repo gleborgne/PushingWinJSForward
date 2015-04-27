@@ -1,10 +1,14 @@
-html,
+﻿html,
 body {
   height: 100%;
   width: 100%;
   position: relative;
   margin: 0;
   padding: 0;
+}
+@font-face {
+  font-family: "Symbols";
+  src: url(../WinJS/fonts/Symbols.ttf);
 }
 #appheader {
   position: absolute;
@@ -99,3 +103,4 @@ body {
 .flickr-picture-item .pic.loaded {
   opacity: 1;
 }
+/*# sourceMappingURL=default.css.map */

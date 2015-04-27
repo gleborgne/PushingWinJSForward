@@ -3,7 +3,7 @@
 (function () {
     "use strict";
 
-    WinJS.UI.Pages.define("/pages/home/home.html", {
+    WinJS.UI.Pages.define("./pages/home/home.html", {
     	init: function (element, options) {
     		var page = this;
 			if (options.search){
@@ -26,7 +26,7 @@
 
     	openDetail: function (arg) {
     		arg.detail.itemPromise.then(function (item) {
-    			WinJS.Navigation.navigate('/pages/detail/detail.html', { picture: item.data });
+    			WinJS.Navigation.navigate('./pages/detail/detail.html', { picture: item.data });
     		});
     	}
     });

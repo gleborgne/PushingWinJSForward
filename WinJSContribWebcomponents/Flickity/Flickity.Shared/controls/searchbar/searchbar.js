@@ -3,7 +3,7 @@
 (function () {
     "use strict";
 
-    var SearchBarCtor = WinJS.UI.Pages.define("/controls/searchbar/searchbar.html", {
+    var SearchBarCtor = WinJS.UI.Pages.define("./controls/searchbar/searchbar.html", {
     	init: function () {
     		var ctrl = this;
     		ctrl.recentItemsPromise = Flickity.Api.recent(0, 80).then(function (items) {
@@ -25,7 +25,7 @@
     		var ctrl = this;
     		arg.detail.itemPromise.then(function (item) {
     			ctrl.hide();
-    			WinJS.Navigation.navigate('/pages/detail/detail.html', { picture: item.data });
+    			WinJS.Navigation.navigate('./pages/detail/detail.html', { picture: item.data });
     		});
     	},
 
@@ -79,7 +79,7 @@
     			ctrl.searchInput.blur();
     			ctrl.hide();
     			setImmediate(function () {
-    				WinJS.Navigation.navigate('/pages/home/home.html', { search: ctrl.searchInput.value });
+    				WinJS.Navigation.navigate('./pages/home/home.html', { search: ctrl.searchInput.value });
     				ctrl.loadLastSearches();
     			});
 

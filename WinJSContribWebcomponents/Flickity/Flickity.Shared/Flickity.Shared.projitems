@@ -16,7 +16,13 @@
     <Content Include="$(MSBuildThisFileDirectory)css\apptheme.css" />
     <Content Include="$(MSBuildThisFileDirectory)css\apptheme.less" />
     <Content Include="$(MSBuildThisFileDirectory)css\default.css" />
+    <Content Include="$(MSBuildThisFileDirectory)css\default.css.map">
+      <DependentUpon>default.css</DependentUpon>
+    </Content>
     <Content Include="$(MSBuildThisFileDirectory)css\default.less" />
+    <Content Include="$(MSBuildThisFileDirectory)css\default.min.css">
+      <DependentUpon>default.css</DependentUpon>
+    </Content>
     <Content Include="$(MSBuildThisFileDirectory)default.html" />
     <Content Include="$(MSBuildThisFileDirectory)js\Flickity.bindings.js" />
     <Content Include="$(MSBuildThisFileDirectory)js\Flickity.config.js" />
@@ -32,6 +38,7 @@
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.less" />
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\home\home.html" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.css" />
     <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.less" />
     <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.html" />
     <Content Include="$(MSBuildThisFileDirectory)pages\settings\settings.js" />

@@ -2,7 +2,7 @@
 (function () {
 	"use strict";
 
-	WinJS.UI.Pages.define("/pages/detail/detail.html", {
+	WinJS.UI.Pages.define("./pages/detail/detail.html", {
 		init: function (element, options) {
 			var ctrl = this;
 			ctrl.picture = options.picture;
