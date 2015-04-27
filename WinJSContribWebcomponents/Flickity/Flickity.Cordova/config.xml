@@ -9,4 +9,8 @@
   <preference name="SplashScreen" value="screen" />
   <preference name="windows-target-version" value="8.0" />
   <preference name="windows-phone-target-version" value="8.1" />
+  <preference name="android-windowSoftInputMode" value="adjustResize" />
+  <preference name="Fullscreen" value="false" />
+  <preference name="Orientation" value="portrait" />
+  <preference name="DisallowOverscroll" value="true" />
 </widget>

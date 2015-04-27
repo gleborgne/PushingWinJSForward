@@ -1,0 +1,122 @@
+﻿@import "apptheme";
+
+html, body {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: "Symbols";
+    src: url(../WinJS/fonts/Symbols.ttf);
+}
+
+@headerSize: 80px;
+
+#appheader {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: @headerSize;
+    background-color: red;
+    transition: height 300ms ease;
+    z-index: 1;
+    overflow: hidden;
+
+    #searchBar {
+        height: 100%;
+    }
+
+    &.expanded {
+        height: 100%;
+    }
+}
+
+#appcontent {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: @headerSize;
+    bottom: 0;
+
+    #contenthost {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        display: block;
+
+        > .pagecontrol {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+    }
+}
+
+.fragment {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    header[role=banner] {
+        background-color: #444;
+        color: white;
+        height: 40px;
+        display: flex;
+        align-items: center;
+
+        .back-button, .win-backbutton {
+            color: white;
+            height: 40px;
+            width: 40px;
+            margin: 0;
+            background-color: black;
+
+            &:disabled {
+                display: none;
+            }
+
+            .win-back {
+                color: white;
+            }
+        }
+
+        .titlearea {
+            flex: 1;
+            margin-left: 10px;
+            line-height: 1em;
+            font-size: 18pt;
+            text-transform: uppercase;
+        }
+    }
+
+    section[role=main] {
+        flex: 1;
+    }
+}
+
+.flickr-picture-item {
+    width: 150px;
+    height: 150px;
+    background-color: #DDD;
+
+    .pic {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 200ms ease-out;
+
+        &.loaded {
+            opacity: 1;
+        }
+    }
+}

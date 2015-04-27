@@ -10,9 +10,15 @@
     <Content Include="$(MSBuildThisFileDirectory)controls\comments\comments.html" />
     <Content Include="$(MSBuildThisFileDirectory)controls\comments\comments.js" />
     <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.css" />
+    <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.css.map">
+      <DependentUpon>searchbar.css</DependentUpon>
+    </Content>
     <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.less" />
     <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.html" />
     <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.js" />
+    <Content Include="$(MSBuildThisFileDirectory)controls\searchbar\searchbar.min.css">
+      <DependentUpon>searchbar.css</DependentUpon>
+    </Content>
     <Content Include="$(MSBuildThisFileDirectory)css\apptheme.css" />
     <Content Include="$(MSBuildThisFileDirectory)css\apptheme.less" />
     <Content Include="$(MSBuildThisFileDirectory)css\default.css" />

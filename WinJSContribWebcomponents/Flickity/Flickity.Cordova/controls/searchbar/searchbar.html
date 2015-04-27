@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>searchbar</title>
+
+    <link href="./searchbar.css" rel="stylesheet" />
+    <script src="./searchbar.js"></script>
+</head>
+<body>
+    <div class="searchbar">
+		<h1>Flickity</h1>
+		<div class="actions">
+			<div class="btn-hide action" tap="hide">&#xE0E1;</div>
+			<div class="btn-settings action" linkto="./pages/settings/settings.html" linkto-args="ctrl:hide">&#xE115;</div>
+		</div>
+		
+		<div class="searchpanel">
+			<input type="search" id="txtSearch" member="searchInput" placeholder="enter your search terms here" /><button id="btnSearch" tap="runSearchFromInput">&#xE1A3;</button>
+		</div>
+		<div class="lastsearch">
+			<h2>last searches</h2>
+			<div class="lastsearch-items" member="lastsearchItems">
+			</div>
+		</div>
+		<div class="recent" member="recentBlock">
+			<h2>recent</h2>
+			<win-template id="pictureItem" extractchild="true">
+				<div class="flickr-picture-item">
+					<div class="pic" data-win-bind="q : q Flickity.Bindings.picture"></div>
+				</div>
+			</win-template>
+			<win-listview id="recentItemsList" member 
+				itemdatasource="list:ctrl:recentItemsPromise" 
+				itemtemplate="select:#pictureItem" 
+				iteminvoked="event:ctrl:recentListItemInvoked"></win-listview>
+			<mcn-smartlistlayout listview="select:#recentItemsList" layouts="global:AppListLayout" ></mcn-smartlistlayout>
+		</div>
+    </div>
+</body>
+</html>

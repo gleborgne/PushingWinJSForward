@@ -1,4 +1,4 @@
-.searchbar {
+﻿.searchbar {
   display: flex;
   flex-flow: column nowrap;
   height: 100%;
@@ -31,7 +31,7 @@
   height: 40px;
   line-height: 40px;
   text-align: center;
-  font-family: 'Segoe UI Symbol';
+  font-family: 'Segoe UI Symbol', 'Symbols';
   font-size: 18pt;
 }
 .searchbar .btn-hide {
@@ -59,7 +59,7 @@
   color: black;
 }
 .searchbar .searchpanel #btnSearch {
-  font-family: 'Segoe UI Symbol';
+  font-family: 'Segoe UI Symbol', 'Symbols';
   border: none;
   background-color: transparent;
   align-self: center;
@@ -120,3 +120,4 @@
 .expanded #searchBar.hasSearch .searchbar .btn-hide {
   display: block;
 }
+/*# sourceMappingURL=searchbar.css.map */
