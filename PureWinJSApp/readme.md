@@ -1,0 +1,1 @@
+This sample application is a vanilla WinJS application. You can use it as reference to see differences in implementation, and how WinJS Contrib can help improve your productivity.
