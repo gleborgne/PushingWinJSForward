@@ -8,6 +8,6 @@
     <DebuggerFlavor>AndroidDevice</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|iOS'">
-    <DebuggerFlavor>iOSLocalDevice</DebuggerFlavor>
+    <DebuggerFlavor>iOSEmulatoriPhone4S</DebuggerFlavor>
   </PropertyGroup>
 </Project>
