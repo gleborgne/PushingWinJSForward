@@ -110,9 +110,21 @@
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="controls\comments\comments.css" />
+    <Content Include="controls\comments\comments.html" />
+    <Content Include="controls\comments\comments.js" />
+    <Content Include="controls\searchbar\searchbar.css" />
+    <Content Include="controls\searchbar\searchbar.css.map" />
+    <Content Include="controls\searchbar\searchbar.html" />
+    <Content Include="controls\searchbar\searchbar.js" />
+    <Content Include="controls\searchbar\searchbar.less" />
+    <Content Include="controls\searchbar\searchbar.min.css" />
     <Content Include="css\apptheme.css" />
     <Content Include="css\apptheme.less" />
     <Content Include="css\default.css" />
+    <Content Include="css\default.css.map">
+      <DependentUpon>default.css</DependentUpon>
+    </Content>
     <Content Include="css\default.less" />
     <Content Include="css\default.min.css" />
     <Content Include="js\default.js" />
@@ -122,6 +134,9 @@
     <Content Include="js\navigator.js" />
     <Content Include="js\_reference.js" />
     <Content Include="pages\detail\detail.css" />
+    <Content Include="pages\detail\detail.css.map">
+      <DependentUpon>detail.css</DependentUpon>
+    </Content>
     <Content Include="pages\detail\detail.html" />
     <Content Include="pages\detail\detail.js" />
     <Content Include="pages\detail\detail.less" />
@@ -247,7 +262,6 @@
   <PropertyGroup>
     <TargetPlatformIdentifier>MDD</TargetPlatformIdentifier>
   </PropertyGroup>
-
   <Target Name="EnsureBuildPrerequisites">
     <!-- These errors will trigger if building from inside Visual Studio and requirements could not be determined -->
     <Error Condition="$(MDAPropertiesEvaluated) == 'true' And $(NodeJsDir) == ''" Text="Path to NodeJs could not be determined. Please check that NodeJs has been installed." />

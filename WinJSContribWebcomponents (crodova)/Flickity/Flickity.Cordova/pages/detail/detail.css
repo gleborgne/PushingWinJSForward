@@ -1,5 +1,6 @@
 ﻿.detail-page section[role=main] {
   position: relative;
+  display: -webkit-flex;
   display: flex;
   flex-flow: column nowrap;
   overflow: auto;

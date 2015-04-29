@@ -48,7 +48,9 @@ body {
   top: 0;
 }
 .fragment {
+  display: -webkit-flex;
   display: flex;
+  -webkit-flex-flow: column nowrap;
   flex-flow: column nowrap;
   width: 100%;
   height: 100%;
@@ -58,6 +60,7 @@ body {
   background-color: #444;
   color: white;
   height: 40px;
+  display: -webkit-flex;
   display: flex;
   align-items: center;
 }
@@ -78,6 +81,7 @@ body {
   color: white;
 }
 .fragment header[role=banner] .titlearea {
+  -webkit-flex: 1;
   flex: 1;
   margin-left: 10px;
   line-height: 1em;
@@ -85,6 +89,7 @@ body {
   text-transform: uppercase;
 }
 .fragment section[role=main] {
+  -webkit-flex: 1;
   flex: 1;
 }
 .flickr-picture-item {

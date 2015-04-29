@@ -1,8 +1,11 @@
 ﻿.searchbar {
+  display: -webkit-flex;
   display: flex;
+  -webkit-flex-flow: column nowrap;
   flex-flow: column nowrap;
   height: 100%;
   color: white;
+  -webkit-justify-content: center;
   justify-content: center;
 }
 .searchbar h1 {
@@ -24,6 +27,7 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 100ms ease;
+  display: -webkit-flex;
   display: flex;
 }
 .searchbar .actions .action {
@@ -32,21 +36,24 @@
   line-height: 40px;
   text-align: center;
   font-family: 'Segoe UI Symbol', 'Symbols';
-  font-size: 18pt;
+  font-size: 12pt;
 }
 .searchbar .btn-hide {
   display: none;
 }
 .searchbar .searchpanel {
+  display: -webkit-flex;
   display: flex;
   width: 100%;
   height: 80px;
+  min-height: 80px;
   padding: 10px;
   box-sizing: border-box;
   margin-top: 30px;
   transition: margin-top 200ms ease;
 }
 .searchbar .searchpanel #txtSearch {
+  -webkit-flex: 1;
   flex: 1;
   align-self: center;
   border: 1px solid transparent;
@@ -92,11 +99,14 @@
   margin-bottom: 5px;
 }
 .searchbar .recent {
+  -webkit-flex: 1;
   flex: 1;
+  display: -webkit-flex;
   display: flex;
   flex-flow: column nowrap;
 }
 .searchbar .recent #recentItemsList {
+  -webkit-flex: 1;
   flex: 1;
   height: 100%;
   width: 100%;
