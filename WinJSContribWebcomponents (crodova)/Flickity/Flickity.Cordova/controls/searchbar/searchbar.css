@@ -16,6 +16,9 @@
   padding: 10px 5px;
   font-size: 48pt;
   opacity: 0;
+  -moz-transition: opacity 300ms ease;
+  -o-transition: opacity 300ms ease;
+  -webkit-transition: opacity 300ms ease;
   transition: opacity 300ms ease;
   /*background-color: #222;*/
   pointer-events: none;
@@ -48,8 +51,13 @@
   height: 80px;
   min-height: 80px;
   padding: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin-top: 30px;
+  -moz-transition: margin-top 200ms ease;
+  -o-transition: margin-top 200ms ease;
+  -webkit-transition: margin-top 200ms ease;
   transition: margin-top 200ms ease;
 }
 .searchbar .searchpanel #txtSearch {
@@ -59,6 +67,9 @@
   border: 1px solid transparent;
   font-size: 18pt;
   color: white;
+  -moz-transition: color 100ms ease;
+  -o-transition: color 100ms ease;
+  -webkit-transition: color 100ms ease;
   transition: color 100ms ease;
 }
 .searchbar .searchpanel #txtSearch:focus {
@@ -76,7 +87,12 @@
 .searchbar .lastsearch,
 .searchbar .recent {
   opacity: 0;
+  -moz-transition: opacity 500ms ease;
+  -o-transition: opacity 500ms ease;
+  -webkit-transition: opacity 500ms ease;
   transition: opacity 500ms ease;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 .searchbar .lastsearch h2,
@@ -84,10 +100,14 @@
   font-size: 1.3rem;
   text-transform: uppercase;
   padding: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 .searchbar .lastsearch .lastsearch-items {
   padding: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 .searchbar .lastsearch .search-term {
@@ -103,6 +123,7 @@
   flex: 1;
   display: -webkit-flex;
   display: flex;
+  -webkit-flex-flow: column nowrap;
   flex-flow: column nowrap;
 }
 .searchbar .recent #recentItemsList {
